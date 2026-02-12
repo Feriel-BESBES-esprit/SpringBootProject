@@ -1,36 +1,40 @@
 package tn.esprit.arctic.springproject.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Position {
+
     @Id
-    private long idPosition;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idPosition;
+
     private Integer classement;
     private Integer nbPoints;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "course_id")
+    private Course course;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "pilote_id")
+    private Pilote pilote;
+
     public Position() {
-
-    }
-    public Position(Integer classement, Integer nbPoints) {
-        this.classement = classement;
-        this.nbPoints = nbPoints;
     }
 
-    public Integer getNbPoints() {
-        return nbPoints;
-    }
+    public Long getIdPosition() { return idPosition; }
+    public void setIdPosition(Long idPosition) { this.idPosition = idPosition; }
 
-    public void setNbPoints(Integer nbPoints) {
-        this.nbPoints = nbPoints;
-    }
+    public Integer getClassement() { return classement; }
+    public void setClassement(Integer classement) { this.classement = classement; }
 
-    public Integer getClassement() {
-        return classement;
-    }
+    public Integer getNbPoints() { return nbPoints; }
+    public void setNbPoints(Integer nbPoints) { this.nbPoints = nbPoints; }
 
-    public void setClassement(Integer classement) {
-        this.classement = classement;
-    }
+    public Course getCourse() { return course; }
+    public void setCourse(Course course) { this.course = course; }
+
+    public Pilote getPilote() { return pilote; }
+    public void setPilote(Pilote pilote) { this.pilote = pilote; }
 }

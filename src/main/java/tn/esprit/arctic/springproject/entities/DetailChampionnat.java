@@ -1,41 +1,33 @@
 package tn.esprit.arctic.springproject.entities;
 
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class DetailChampionnat {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
+
     private String code;
     private String description;
 
-    public DetailChampionnat (){
+    // Inverse side of 1:1
+    @OneToOne(mappedBy = "detail")
+    private Championnat championnat;
 
-    }
-    public DetailChampionnat(String code, String description) {
-        this.code = code;
-        this.description = description;
-    }
-
-    public String getCode() {
-        return code;
+    public DetailChampionnat() {
     }
 
-    public void setCode(String code) {
-        this.code = code;
-    }
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-    public String getDescription() {
-        return description;
-    }
+    public String getCode() { return code; }
+    public void setCode(String code) { this.code = code; }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+    public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
+
+    public Championnat getChampionnat() { return championnat; }
+    public void setChampionnat(Championnat championnat) { this.championnat = championnat; }
 }
