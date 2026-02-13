@@ -1,10 +1,18 @@
 package tn.esprit.arctic.springproject.entities;
 
 import jakarta.persistence.*;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
+
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Pilote {
 
     @Id
@@ -26,27 +34,4 @@ public class Pilote {
     @OneToMany(mappedBy = "pilote")
     private List<Position> positions = new ArrayList<>();
 
-    public Pilote() {
-    }
-
-    public Long getIdPilote() { return idPilote; }
-    public void setIdPilote(Long idPilote) { this.idPilote = idPilote; }
-
-    public String getLibelleP() { return libelleP; }
-    public void setLibelleP(String libelleP) { this.libelleP = libelleP; }
-
-    public Integer getNbPointsTotal() { return nbPointsTotal; }
-    public void setNbPointsTotal(Integer nbPointsTotal) { this.nbPointsTotal = nbPointsTotal; }
-
-    public Integer getClassementGeneral() { return classementGeneral; }
-    public void setClassementGeneral(Integer classementGeneral) { this.classementGeneral = classementGeneral; }
-
-    public Categorie getCategorie() { return categorie; }
-    public void setCategorie(Categorie categorie) { this.categorie = categorie; }
-
-    public Equipe getEquipe() { return equipe; }
-    public void setEquipe(Equipe equipe) { this.equipe = equipe; }
-
-    public List<Position> getPositions() { return positions; }
-    public void setPositions(List<Position> positions) { this.positions = positions; }
 }
