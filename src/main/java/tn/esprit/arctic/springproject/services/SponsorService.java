@@ -1,10 +1,12 @@
 package tn.esprit.arctic.springproject.services;
 
+import org.springframework.stereotype.Service;
 import tn.esprit.arctic.springproject.entities.Sponsor;
 import tn.esprit.arctic.springproject.repository.sponsorRepository;
 
 import java.util.List;
 
+@Service
 public class SponsorService implements ISponsorService{
     sponsorRepository sp;
     @Override
