@@ -31,4 +31,13 @@ public class SponsorController {
     public List<Sponsor> ajouterSponsors(@RequestBody List<Sponsor> sponsors ){
         return s.ajouterSponsors(sponsors);
     }
+    @DeleteMapping("/{id}")
+    public void supprimerSponsor(@PathVariable Long id) {
+        s.supprimerSponsor(id);
+    }
+    @PutMapping("/archive/{id}")
+    public Boolean archiverSponsor(@PathVariable Long id) {
+        return s.archiverSponsor(id);
+    }
+
 }
