@@ -1,8 +1,15 @@
 package tn.esprit.arctic.springproject.entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
+@Data
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 public class Contrat {
 
     @Id
@@ -13,32 +20,12 @@ public class Contrat {
     private String annee;
     private Boolean archived;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "equipe_id")
     private Equipe equipe;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "sponsor_id")
     private Sponsor sponsor;
 
-    public Contrat() {
-    }
-
-    public Long getIdContrat() { return idContrat; }
-    public void setIdContrat(Long idContrat) { this.idContrat = idContrat; }
-
-    public Float getMontant() { return montant; }
-    public void setMontant(Float montant) { this.montant = montant; }
-
-    public String getAnnee() { return annee; }
-    public void setAnnee(String annee) { this.annee = annee; }
-
-    public Boolean getArchived() { return archived; }
-    public void setArchived(Boolean archived) { this.archived = archived; }
-
-    public Equipe getEquipe() { return equipe; }
-    public void setEquipe(Equipe equipe) { this.equipe = equipe; }
-
-    public Sponsor getSponsor() { return sponsor; }
-    public void setSponsor(Sponsor sponsor) { this.sponsor = sponsor; }
 }
